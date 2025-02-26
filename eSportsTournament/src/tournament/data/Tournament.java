@@ -1,5 +1,7 @@
 package tournament.data;
 
+import tournament.comparators.IComparator;
+
 public abstract class Tournament {
     protected String name;
     protected String game;

@@ -1,6 +1,11 @@
 package tournament.data;
 
-public class Player extends Participant{
+import tournament.comparators.IComparator;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class Player extends Participant implements IComparator<Player> {
     int level;
     float ranking;
 
@@ -27,5 +32,10 @@ public class Player extends Participant{
     @Override
     public String toString(){
         return "Player: " + super.toString() + " - Level: " + level + " - " + "Ranking: " + ranking;
+    }
+
+    @Override
+    public int compareTo(Player other) {
+        return Float.compare(this.ranking, other.ranking);
     }
 }

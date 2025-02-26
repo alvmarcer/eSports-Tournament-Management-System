@@ -1,7 +1,10 @@
 package tournament.data;
 
-public class Team extends Participant{
+import tournament.comparators.IComparator;
+
+public class Team extends Participant implements IComparator<Team> {
     Player[] arrayOfPlayers;
+    float averageRanking;
 
     public Team(String name, int members){
         super(name);
@@ -20,6 +23,30 @@ public class Team extends Participant{
                 arrayOfPlayers[i] = p;
             }
         }
+        calculateAverageRanking();
+    }
+
+    public void calculateAverageRanking() {
+        float totalRanking = 0;
+        int count = 0;
+
+        for(Player player : arrayOfPlayers){
+            if(player != null) {
+                totalRanking += player.getRanking();
+                count++;
+            }
+        }
+
+        if(count > 0) {
+            this.averageRanking = totalRanking / count;
+        }
+        else {
+            this.averageRanking = 0;
+        }
+    }
+
+    public float getAverageRanking() {
+        return averageRanking;
     }
 
     @Override
@@ -29,5 +56,9 @@ public class Team extends Participant{
             result += arrayOfPlayers[i] + " ";
         }
         return super.toString() + " - " + result;
+    }
+    @Override
+    public int compareTo(Team other) {
+        return Float.compare(this.getAverageRanking(), other.getAverageRanking());
     }
 }
