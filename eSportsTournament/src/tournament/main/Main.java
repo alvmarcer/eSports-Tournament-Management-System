@@ -199,13 +199,20 @@ public class Main {
                     tournamentManager.showMatches();
                     break;
                 case "9":
-                    for(int i=0; i<tournamentManager.getMatches().length; i++) {
-                        if(tournamentManager.getMatches()[i].getResult().compareTo("Pending") == 0) {
-                            System.out.print("Change result for match n." + (i+1) + ": ");
-                            String newResult = sc.nextLine();
+                    tournamentManager.inputResult(); // Added in TournamentManager
 
-                            tournamentManager.getMatches()[i].setResult(newResult);
-                        }
+                    System.out.println();
+
+                    System.out.print("Number of the pending match to change status: ");
+                    int index = sc.nextInt()-1;
+                    sc.nextLine();
+
+                    if(index >= 0 && index < tournamentManager.getMatches().length && tournamentManager.getMatches()[index].getResult().equals("Pending")) {
+                        System.out.print("New result of the match: ");
+                        tournamentManager.getMatches()[index].setResult(sc.nextLine());
+                    }
+                    else {
+                        System.out.println("ERROR: Not a valid index or not a pending match.");
                     }
                     break;
                 case "10":

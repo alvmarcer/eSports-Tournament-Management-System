@@ -181,4 +181,12 @@ public class TournamentManager {
             }
         }
     }
+
+    public void inputResult() {
+        for(int i=0; i<matches.length; i++) {
+            if(matches[i].getResult().compareTo("Pending") == 0) {
+                System.out.println((i+1) + ". " + matches[i]);
+            }
+        }
+    }
 }
