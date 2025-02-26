@@ -33,6 +33,12 @@ public class Player extends Participant implements IComparator<Player> {
 
     @Override
     public int compareTo(Player other) {
-        return Float.compare(this.ranking, other.ranking);
+        int result = Float.compare(this.ranking, other.ranking);
+
+        if(result == 0) {
+            result = this.getName().compareTo(other.getName());
+        }
+
+        return result;
     }
 }

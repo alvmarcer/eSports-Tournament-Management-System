@@ -3,7 +3,7 @@ package tournament.main;
 import tournament.data.*;
 import java.util.*;
 
-public class TournamentManager{
+public class TournamentManager {
 
     private final Player[] players;
     private final Team[] teams;
@@ -16,6 +16,22 @@ public class TournamentManager{
         tournaments = new Tournament[3];
         matches = new Match[5];
 
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public Team[] getTeams() {
+        return teams;
+    }
+
+    public Tournament[] getTournaments() {
+        return tournaments;
+    }
+
+    public Match[] getMatches() {
+        return matches;
     }
 
     public void initialize() {
@@ -127,14 +143,18 @@ public class TournamentManager{
     }
 
     public void showTournaments() {
+        Arrays.sort(tournaments);
+
         for(Tournament t : tournaments) {
-            System.out.println(t);
+            if(tournaments != null) {
+                System.out.println(t);
+            }
         }
     }
 
     public void showPlayerRanking() {
         Arrays.sort(players);
-        
+
         for (Player player : players) {
             if(player != null) {
                 System.out.println(player);
@@ -148,6 +168,16 @@ public class TournamentManager{
         for(Team team : teams) {
             if(team != null) {
                 System.out.println(team);
+            }
+        }
+    }
+
+    public void showMatches() {
+        Arrays.sort(matches);
+
+        for(Match match : matches) {
+            if(match != null) {
+                System.out.println(match);
             }
         }
     }

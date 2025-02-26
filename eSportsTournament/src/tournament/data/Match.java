@@ -1,6 +1,8 @@
 package tournament.data;
 
-public class Match {
+import tournament.comparators.IComparator;
+
+public class Match implements IComparator<Match> {
     Tournament tournament;
     Participant participant1;
     Participant participant2;
@@ -13,6 +15,14 @@ public class Match {
         result = "Pending";
     }
 
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
     public void setResult(String result) {
         this.result = result;
     }
@@ -20,5 +30,10 @@ public class Match {
     @Override
     public String toString(){
         return tournament + " - " + participant1 + " VS. " + participant2 + " - Result: " + result;
+    }
+
+    @Override
+    public int compareTo(Match other) {
+        return this.getTournament().name.compareTo(other.getTournament().name);
     }
 }

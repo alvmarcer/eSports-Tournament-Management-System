@@ -19,14 +19,19 @@ public class Team extends Participant implements IComparator<Team> {
     }
 
     public void addPlayer(Player p) {
-        for(int i = 0 ; i < arrayOfPlayers.length ; i++){
+        boolean nullFound = false;
+
+        for(int i = 0 ; i < arrayOfPlayers.length && !nullFound ; i++){
             if(arrayOfPlayers[i] == null) {
                 arrayOfPlayers[i] = p;
-            }
-            else{
-                throw new FullTeamException("This team is full");
+                nullFound = true;
             }
         }
+
+        if(!nullFound) {
+            throw new FullTeamException("This team is full");
+        }
+
         calculateAverageRanking();
     }
 
@@ -59,7 +64,15 @@ public class Team extends Participant implements IComparator<Team> {
         for (int i = 0 ; i < arrayOfPlayers.length ; i++){
             result += "Player: " + arrayOfPlayers[i] + " ";
         }
-        return super.toString() + " - Members: "+ arrayOfPlayers.length + "/5: " + result;
+
+        int numberOfPlayers = 0;
+        for(int i=0; i<arrayOfPlayers.length; i++) {
+            if(arrayOfPlayers[i] != null) {
+                numberOfPlayers++;
+            }
+        }
+
+        return super.toString() + " - Members: "+ numberOfPlayers + "/5: " + result;
     }
 
     @Override

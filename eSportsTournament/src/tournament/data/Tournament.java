@@ -1,6 +1,8 @@
 package tournament.data;
 
-public abstract class Tournament {
+import tournament.comparators.IComparator;
+
+public abstract class Tournament implements IComparator<Tournament> {
     protected String name;
     protected String game;
     protected int prize;
@@ -34,5 +36,10 @@ public abstract class Tournament {
     @Override
     public String toString(){
         return "Tournament - " + name + " (" + game + ")" + " - Prize: " + prize + "€";
+    }
+
+    @Override
+    public int compareTo(Tournament other) {
+        return this.getName().compareTo(other.getName());
     }
 }
