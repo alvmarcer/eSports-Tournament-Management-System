@@ -1,6 +1,7 @@
 package tournament.data;
 
 import tournament.comparators.IComparator;
+import tournament.exceptions.FullTeamException;
 
 public class Team extends Participant implements IComparator<Team> {
     Player[] arrayOfPlayers;
@@ -21,6 +22,9 @@ public class Team extends Participant implements IComparator<Team> {
         for(int i = 0 ; i < arrayOfPlayers.length ; i++){
             if(arrayOfPlayers[i] == null) {
                 arrayOfPlayers[i] = p;
+            }
+            else{
+                throw new FullTeamException("This team is full");
             }
         }
         calculateAverageRanking();
