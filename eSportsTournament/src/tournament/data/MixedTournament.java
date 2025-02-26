@@ -19,6 +19,6 @@ public class MixedTournament extends Tournament {
 
     @Override
     public String toString(){
-        return "Mixed tournament" + super.toString() + " - game mode: " + gameMode;
+        return "Mixed" + super.toString() + " - Game mode: " + gameMode;
     }
 }

@@ -2,9 +2,6 @@ package tournament.data;
 
 import tournament.comparators.IComparator;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class Player extends Participant implements IComparator<Player> {
     int level;
     float ranking;
@@ -15,23 +12,23 @@ public class Player extends Participant implements IComparator<Player> {
         this.ranking = ranking;
     }
 
-    public int getLevel(){
+    public int getLevel() {
         return level;
     }
-    public float getRanking(){
+    public float getRanking() {
         return ranking;
     }
 
-    public void setLevel(int level){
+    public void setLevel(int level) {
         this.level = level;
     }
-    public void setRanking(float ranking){
+    public void setRanking(float ranking) {
         this.ranking = ranking;
     }
 
     @Override
     public String toString(){
-        return "Player: " + super.toString() + " - Level: " + level + " - " + "Ranking: " + ranking;
+        return "Player: " + super.toString() + " - Level: " + level + " - Ranking: " + ranking;
     }
 
     @Override

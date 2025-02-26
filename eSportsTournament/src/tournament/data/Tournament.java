@@ -1,7 +1,5 @@
 package tournament.data;
 
-import tournament.comparators.IComparator;
-
 public abstract class Tournament {
     protected String name;
     protected String game;
@@ -35,6 +33,6 @@ public abstract class Tournament {
 
     @Override
     public String toString(){
-        return name + "(" + game + ")" + " - " + "prize: " + prize;
+        return "Tournament - " + name + " (" + game + ")" + " - Prize: " + prize + "€";
     }
 }

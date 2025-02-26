@@ -94,6 +94,7 @@ public class TournamentManager{
             }
         }
     }
+
     public Player findPlayer(String username) {
         boolean found=false;
         Player player = null;
@@ -109,6 +110,7 @@ public class TournamentManager{
         }
         return player;
     }
+
     public Team findTeam(String teamName) {
         boolean found=false;
         Team team = null;
@@ -123,29 +125,30 @@ public class TournamentManager{
         }
         return team;
     }
-    public void showPlayerRanking() {
-        Arrays.sort(players);
-        for (Player player : players) {
-            if(player != null) System.out.println(player);
+
+    public void showTournaments() {
+        for(Tournament t : tournaments) {
+            System.out.println(t);
         }
     }
-    public void showTeamRanking() {
-        for (Team team : teams) {
-            if (team != null) {
-                team.calculateAverageRanking();
+
+    public void showPlayerRanking() {
+        Arrays.sort(players);
+        
+        for (Player player : players) {
+            if(player != null) {
+                System.out.println(player);
             }
         }
+    }
+
+    public void showTeamRanking() {
         Arrays.sort(teams);
 
         for(Team team : teams) {
             if(team != null) {
                 System.out.println(team);
             }
-        }
-    }
-    public void showTournaments() {
-        for(Tournament t : tournaments) {
-            System.out.println(t);
         }
     }
 }

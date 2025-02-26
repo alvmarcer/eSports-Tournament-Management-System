@@ -7,18 +7,18 @@ public class Team extends Participant implements IComparator<Team> {
     Player[] arrayOfPlayers;
     float averageRanking;
 
-    public Team(String name, int members){
+    public Team(String name, int members) {
         super(name);
         if(members <= 2){
             arrayOfPlayers = new Player[2];
-        } else if (members > 5) {
+        } else if (members >= 5) {
             arrayOfPlayers = new Player[5];
         } else {
             arrayOfPlayers = new Player[members];
         }
     }
 
-    public void addPlayer(Player p){
+    public void addPlayer(Player p) {
         for(int i = 0 ; i < arrayOfPlayers.length ; i++){
             if(arrayOfPlayers[i] == null) {
                 arrayOfPlayers[i] = p;
@@ -30,11 +30,11 @@ public class Team extends Participant implements IComparator<Team> {
         calculateAverageRanking();
     }
 
-    public void calculateAverageRanking() {
+    public void calculateAverageRanking() { // This method could be private
         float totalRanking = 0;
         int count = 0;
 
-        for(Player player : arrayOfPlayers){
+        for(Player player : arrayOfPlayers) {
             if(player != null) {
                 totalRanking += player.getRanking();
                 count++;
@@ -54,13 +54,14 @@ public class Team extends Participant implements IComparator<Team> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String result = "";
         for (int i = 0 ; i < arrayOfPlayers.length ; i++){
-            result += arrayOfPlayers[i] + " ";
+            result += "Player: " + arrayOfPlayers[i] + " ";
         }
-        return super.toString() + " - " + result;
+        return super.toString() + " - Members: "+ arrayOfPlayers.length + "/5: " + result;
     }
+
     @Override
     public int compareTo(Team other) {
         return Float.compare(this.getAverageRanking(), other.getAverageRanking());
